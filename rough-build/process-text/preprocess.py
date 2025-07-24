@@ -14,6 +14,36 @@ file_path = os.path.join(script_dir, "../../text-data/news_story.txt")
 with open(file_path, 'r', encoding="utf-8") as f:
     raw_text = f.read()
 
-preprocess = re.split(r'([,.:;?_!"()\s]|--)', raw_text)
-preprocess = [item.strip() for item in preprocess if item.strip()]
-print(preprocess[:50])
+print(raw_text)
+preprocess_pass_one = re.split(r'([,.:;?_!"()\s]|--)', raw_text)
+preprocess_pass_two = [item.strip() for item in preprocess_pass_one if item.strip()]
+
+
+#vocabulary===========================================================================
+
+alphabetical_words = sorted(set(preprocess_pass_two))
+vocabulary = {token:interger for interger, token in enumerate(alphabetical_words)}
+
+# forget above ==================================================
+
+class SimpleTokenizerV1:
+    def __init__(self, vocab):
+        self.str_to_int = vocab
+        self.int_to_str = {i:s for s,i in vocab.items()}
+    
+    def encode(self, text):
+        preprocessed = re.split(r'([,.:;?_!"()\']|--|\s)', text)
+                                
+        preprocessed = [
+            item.strip() for item in preprocessed if item.strip()
+        ]
+        ids = [self.str_to_int[s] for s in preprocessed]
+        return ids
+        
+    def decode(self, ids):
+        text = " ".join([self.int_to_str[i] for i in ids])
+        text = re.sub(r'\s+([,.?!"()\'])', r'\1', text)
+        return text
+
+tokenizer = SimpleTokenizerV1(vocabulary)
+print(tokenizer.encode(raw_text)) ## has to be in vocab, but it should be!
