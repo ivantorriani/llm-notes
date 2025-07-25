@@ -3,6 +3,9 @@
 file: DatasetMaker.py
 purpose: create text pair encodings for next word predictions with a defined class functionality
 run: python3 -m rough_build.input_target_pairs.DatasetMaker
+good implementations for later:
+1) GPTDatasetV1 class (easy sliding window problem)
+2) dataloader 
 '''
 #=========================
 
@@ -10,9 +13,12 @@ run: python3 -m rough_build.input_target_pairs.DatasetMaker
 import torch
 from torch.utils.data import Dataset, DataLoader
 from rough_build.text_loaders.read_text import readtxt
-from rough_build.tokenizers.simple_tokenizers import byte_tokenizer
+from rough_build.tokenizers.SimpleTokenizers import byte_tokenizer
 #imports=========================
 
+'''
+purpose: 
+'''
 class GPTDatasetV1(Dataset):
     '''
     input: raw text, tokenizer selection, length of 
@@ -37,3 +43,28 @@ class GPTDatasetV1(Dataset):
 
     def __getitem__(self, idx):
         return self.input_ids[idx], self.target_ids[idx]
+
+
+'''
+purpose: 
+'''
+def create_dataloader_v1(txt, batch_size=4, max_length=256, 
+                         stride=128, shuffle=True, drop_last=True,
+                         num_workers=0):
+
+    # Initialize the tokenizer
+    tokenizer = byte_tokenizer
+
+    # Create dataset
+    dataset = GPTDatasetV1(txt, tokenizer, max_length, stride)
+
+    # Create dataloader
+    dataloader = DataLoader(
+        dataset,
+        batch_size=batch_size,
+        shuffle=shuffle,
+        drop_last=drop_last,
+        num_workers=num_workers
+    )
+
+    return dataloader
