@@ -18,6 +18,9 @@ from rough_build.tokenizers.SimpleTokenizers import byte_tokenizer
 
 '''
 purpose: 
+create the datasets with sliding windows. 
+maps each input id to a target id. 
+can be implemented.
 '''
 class GPTDatasetV1(Dataset):
     '''
@@ -47,6 +50,8 @@ class GPTDatasetV1(Dataset):
 
 '''
 purpose: 
+uses torch dataloader to move the dataset into a dataloader,
+the thing that is used during training.
 '''
 def create_dataloader_v1(txt, batch_size=4, max_length=256, 
                          stride=128, shuffle=True, drop_last=True,
