@@ -73,4 +73,5 @@ tokenizer = SimpleTokenizerV1(vocabulary)
 tokenizer_2 = SimpleTokenizerV2(vocabulary)
 byte_tokenizer = tiktoken.get_encoding("gpt2")
 encoded_text = byte_tokenizer.encode(raw_text, allowed_special={'<|endoftext|>'})
-decoded_text = byte_tokenizer.decode(raw_text)
+
+# set tokenizers ==================================================
