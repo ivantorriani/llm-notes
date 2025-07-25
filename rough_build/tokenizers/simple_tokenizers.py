@@ -4,8 +4,11 @@ file: Simple-Tokenizers.py
 purpose: present two simple methods for decoding and encoding text
 '''
 #=========================
+# python3 -m rough_build.tokenizers.simple_tokenizers
 
+#imports==============================================================
 import re
+import tiktoken
 from rough_build.text_loaders.read_text import readtxt
 
 #process text===========================================================================
@@ -15,14 +18,13 @@ raw_text = readtxt("news_story.txt")
 preprocess_pass_one = re.split(r'([,.:;?_!"()\s]|--)', raw_text)
 preprocess_pass_two = [item.strip() for item in preprocess_pass_one if item.strip()]
 
-
 #vocabulary===========================================================================
 
 alphabetical_words = sorted(set(preprocess_pass_two))
 alphabetical_words.extend(["<|endoftext|>", "<|unk|>"])
 vocabulary = {token:interger for interger, token in enumerate(alphabetical_words)}
 
-# tokenizers (not handle unknowns, handles unknowns) ==================================================
+# tokenizers (not handle unknowns, handles unknowns, premade) ==================================================
 
 class SimpleTokenizerV1:
     def __init__(self, vocab):
@@ -65,10 +67,10 @@ class SimpleTokenizerV2:
         text = re.sub(r'\s+([,.:;?!"()\'])', r'\1', text)
         return text
 
-# example ==================================================
+# set tokenizers ==================================================
 
 tokenizer = SimpleTokenizerV1(vocabulary)
 tokenizer_2 = SimpleTokenizerV2(vocabulary)
-
-print(tokenizer.encode(raw_text)) 
-print(tokenizer_2.encode(raw_text))
+byte_tokenizer = tiktoken.get_encoding("gpt2")
+encoded_text = byte_tokenizer.encode(raw_text, allowed_special={'<|endoftext|>'})
+decoded_text = byte_tokenizer.decode(raw_text)
