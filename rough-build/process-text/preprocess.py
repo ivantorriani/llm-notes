@@ -6,11 +6,11 @@ processing text here
 
 import re
 
-#just get the damn thing absolutely
+#process text===========================================================================
 with open("text-data/news_story.txt", 'r', encoding="utf-8") as f:
     raw_text = f.read()
 
-print(raw_text)
+
 preprocess_pass_one = re.split(r'([,.:;?_!"()\s]|--)', raw_text)
 preprocess_pass_two = [item.strip() for item in preprocess_pass_one if item.strip()]
 
@@ -28,7 +28,7 @@ class SimpleTokenizerV1:
         self.int_to_str = {i:s for s,i in vocab.items()}
     
     def encode(self, text):
-        preprocessed = re.split(r'([,.:;?_!"()\']|--|\s)', text)
+        preprocessed = re.split(r'([,.:;?_!"()\s]|--)', text)
                                 
         preprocessed = [
             item.strip() for item in preprocessed if item.strip()
@@ -42,4 +42,4 @@ class SimpleTokenizerV1:
         return text
 
 tokenizer = SimpleTokenizerV1(vocabulary)
-print(tokenizer.encode(raw_text)) ## has to be in vocab, but it should be!
+print(tokenizer.encode(raw_text)) 
