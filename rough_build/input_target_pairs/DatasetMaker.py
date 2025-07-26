@@ -73,3 +73,6 @@ def create_dataloader_v1(txt, batch_size=4, max_length=256,
     )
 
     return dataloader
+
+#dataloader_1 = (txt, byte tokenizer, 1, 4, 1, shuffle=True)
+#dataloader_large = (txt,  8, 4, 4, True ) # for larger, more parallel processes 

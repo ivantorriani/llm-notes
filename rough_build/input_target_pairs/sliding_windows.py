@@ -9,7 +9,7 @@ run: python3 -m rough_build.input_target_pairs.sliding_windows
 
 #imports=========================
 from rough_build.text_loaders.read_text import readtxt
-from rough_build.tokenizers.simple_tokenizers import byte_tokenizer
+from rough_build.tokenizers.SimpleTokenizers import byte_tokenizer
 #imports=========================
 
 
