@@ -30,7 +30,7 @@ class SelfAttention(nn.Module):
         values = self.W_value(x)
 
         unnormalized_attn_scores = queries @ keys.tranpose(0,1)
-        normalized_attn_scores = torch.softmax((unnormalized_attn_scores) / (keys.shape[-1])**(.5))
+        normalized_attn_scores = torch.softmax(((unnormalized_attn_scores) / (keys.shape[-1])**(.5)), dim=-1)
         context_vector = normalized_attn_scores @ values 
 
         return context_vector
