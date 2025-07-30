@@ -2,6 +2,9 @@
 '''
 file: SelfAttentionv1.py
 purpose: Initiate a class to implement self attention mechanisms.  
+note: if buggy results occur in the future, consider implementing
+the book's algorithms. it might be a line or two of my own
+problems causing mishaps, but it looks mostly fine. 
 '''
 #=========================
 
