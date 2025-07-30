@@ -17,7 +17,7 @@ class CasualAttention(nn.Module):
         self.W_keys = nn.Linear(d_in, d_out, bias=qkv_bias)
         self.W_values = nn.Linear(d_in, d_out, bias=qkv_bias)
         # also need to initialize mask and dropout
-        self.dropout = dropout 
+        self.dropout = nn.Dropout(dropout)
         self.register_buffer('mask', torch.triu(torch.ones(context_length, context_length), diagonal=1))
         self.context_length = context_length
     def forward(self, x):
