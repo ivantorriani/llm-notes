@@ -25,3 +25,13 @@ class SelfAttentionv1(nn.module):
         values
         '''
     def forward(self, x):# where x is the tensor
+        queries = self.W_query(x)
+        keys = self.W_key(x)
+        values = self.W_value(x)
+
+        unnormalized_attn_scores = queries @ keys.tranpose(0,1)
+        normalized_attn_scores = torch.softmax((unnormalized_attn_scores) / (keys.shape[-1])**(.5))
+        context_vector = normalized_attn_scores @ values 
+
+        return context_vector
+
