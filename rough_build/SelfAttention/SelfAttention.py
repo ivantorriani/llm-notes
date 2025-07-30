@@ -14,7 +14,7 @@ import torch.nn as nn
 purpose: generalize attention mechanisms
 '''
 
-class SelfAttentionv1(nn.module):
+class SelfAttention(nn.module):
     def __init__(self, d_in, d_out, qkv_bias=False):
         super().__init__()
         self.W_query = nn.Linear(d_in, d_out, bias=qkv_bias)
