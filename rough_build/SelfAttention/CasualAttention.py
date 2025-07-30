@@ -10,7 +10,7 @@ import torch
 import torch.nn as nn
 #imports=========================
 
-class CasualAttention(nn.Module):
+class CasualAttention(nn.module):
     def __init__(self, d_in, d_out, context_length, dropout, qkv_bias=False):
         super().__init__()
         self.W_query = nn.Linear(d_in, d_out, bias=qkv_bias)
