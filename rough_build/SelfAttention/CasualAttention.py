@@ -19,3 +19,21 @@ class CasualAttention(nn.Module):
         # also need to initialize mask and dropout
         self.dropout = dropout 
         self.register_buffer('mask', torch.triu(torch.ones(context_length, context_length), diagonal=1))
+        self.context_length = context_length
+    def forward(self, x):
+        b, num_tokens, d_in = x.shape
+        queries, keys, values = self.W_query(x), self.W_keys(x), self.W_values(x)
+        unnormalized_attn_scores = queries @ (keys.transpose(1,2))
+
+        #mas/dropout phase
+        unnormalized_attn_scores.masked_fill_(self.mask.bool()[:num_tokens, :num_tokens], -torch.inf)
+        normalized_attn_scores = torch.softmax(unnormalized_attn_scores / keys.shape[-1]**0.5, dim=1) 
+        normalized_attn_scores = self.dropout(normalized_attn_scores)
+
+        #return context vector
+        
+        return normalized_attn_scores @ values
+
+
+        
+
