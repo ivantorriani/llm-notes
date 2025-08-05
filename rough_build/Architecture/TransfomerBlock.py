@@ -3,15 +3,16 @@
 '''
 file: TransformerBlock.py
 purpose: Introduces many previous architectures and mechanisms into one main block. 
+note: important to implement via the picture. This will help reproduce from memory. 
 '''
 #=========================
 
 #imports=========================
 import torch
 import torch.nn as nn
-import rough_build.Architecture.FeedForward
-import rough_build.Attention_Mechanisms.MultiHeadAttention
-import rough_build.Architecture.LayerNorm 
+from rough_build.Architecture.FeedForward import FeedForward
+from rough_build.Attention_Mechanisms.MultiHeadAttention import MultiHeadAttention
+from rough_build.Architecture.LayerNorm import LayerNorm
 #imports=========================
 
 
