@@ -7,7 +7,6 @@ purpose: Demonstrate first working functionality of text generation.
 
 #imports=========================
 import torch 
-import torch.nn as nn
 #imports=========================
 
 def generate_text_simple(model, idx, max_new_tokens, context_size):
