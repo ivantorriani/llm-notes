@@ -12,8 +12,8 @@ good implementations for later:
 #imports=========================
 import torch
 from torch.utils.data import Dataset, DataLoader
-from rough_build.text_loaders.read_text import readtxt
-from rough_build.tokenizers.SimpleTokenizers import byte_tokenizer
+from src.text_loaders.read_text import readtxt
+from src.Tokenizers.SimpleTokenizers import byte_tokenizer
 #imports=========================
 
 '''
