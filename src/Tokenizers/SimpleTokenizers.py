@@ -9,7 +9,7 @@ purpose: present two simple methods for decoding and encoding text
 #imports==============================================================
 import re
 import tiktoken
-from rough_build.text_loaders.read_text import readtxt
+from src.text_loaders.read_text import readtxt
 
 #process text===========================================================================
 

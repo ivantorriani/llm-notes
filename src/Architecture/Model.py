@@ -9,8 +9,8 @@ note: again, important to refer to picture to implement from scratch.
 #imports=========================
 import torch
 import torch.nn as nn
-from rough_build.Architecture.TransfomerBlock import TransformerBlock
-from rough_build.Architecture.LayerNorm import LayerNorm
+from src.Architecture.TransfomerBlock import TransformerBlock
+from src.Architecture.LayerNorm import LayerNorm
 #imports=========================
 
 class GPTModel(nn.Module):

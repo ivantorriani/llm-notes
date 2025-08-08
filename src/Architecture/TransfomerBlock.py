@@ -10,9 +10,9 @@ note: important to implement via the picture. This will help reproduce from memo
 #imports=========================
 import torch
 import torch.nn as nn
-from rough_build.Architecture.FeedForward import FeedForward
-from rough_build.Attention_Mechanisms.MultiHeadAttention import MultiHeadAttention
-from rough_build.Architecture.LayerNorm import LayerNorm
+from src.Architecture.FeedForward import FeedForward
+from src.Attention_Mechanisms.MultiHeadAttention import MultiHeadAttention
+from src.Architecture.LayerNorm import LayerNorm
 #imports=========================
 
 

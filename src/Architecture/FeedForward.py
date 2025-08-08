@@ -9,7 +9,7 @@ purpose: Extract important patterns
 #imports=========================
 import torch
 import torch.nn as nn
-from rough_build.Architecture.GELU import GELU 
+from src.Architecture.GELU import GELU 
 
 #imports=========================
 
