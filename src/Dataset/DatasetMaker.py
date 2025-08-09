@@ -12,9 +12,10 @@ good implementations for later:
 #imports=========================
 import torch
 from torch.utils.data import Dataset, DataLoader
-from src.text_loaders.read_text import readtxt
-from src.Tokenizers.SimpleTokenizers import byte_tokenizer
+import tiktoken
 #imports=========================
+
+byte_tokenizer = tiktoken.get_encoding("gpt2")
 
 '''
 purpose: 
