@@ -1,8 +1,7 @@
 #=========================
 '''
 file: evaluate_model.py
-purpose: Training sequence. 
-note: Implement for practice again the main training loop
+purpose: Print out the training losses and evaluation losses
 '''
 #=========================
 

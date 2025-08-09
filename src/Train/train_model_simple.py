@@ -11,6 +11,7 @@ import torch
 import torch.nn as nn
 from src.Analysis.cross_entropy import calc_loss_batch
 from src.Train.evaluate_model import evaluate_model
+from src.Train.generate_and_print_sample import generate_and_print_sample
 #imports=========================
 
 
