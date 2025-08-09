@@ -10,6 +10,7 @@ note: Implement for practice again the main training loop
 import torch 
 import torch.nn as nn
 from src.Analysis.cross_entropy import calc_loss_batch
+from src.Train.evaluate_model import evaluate_model
 #imports=========================
 
 
