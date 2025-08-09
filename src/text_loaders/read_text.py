@@ -6,6 +6,6 @@ purpose: read txt files and return raw strings
 #=========================
 
 def readtxt(path:str) -> str:    
-    with open("text-data/" + path, 'r', encoding="utf-8") as f:
+    with open(path, 'r', encoding="utf-8") as f:
         raw_text = f.read()
         return raw_text
