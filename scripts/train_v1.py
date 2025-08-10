@@ -12,9 +12,7 @@ note: python3 -m scripts.train_v1
 import json 
 import torch
 import tiktoken
-from src.Analysis.cross_entropy import calc_loss_batch, calc_loss_loader
 from src.Train.train_model_simple import train_model_simple
-from src.Dataset.DatasetMaker import GPTDatasetV1
 from src.Architecture.Model import GPTModel
 from src.Dataset.create_dataloader_v1 import create_dataloader_v1
 from src.text_loaders.read_text import readtxt
@@ -75,6 +73,6 @@ train_loss, val_loss, tokens_seen = train_model_simple(
     eval_freq=5, eval_iter = 5, start_context="Why do the birds sing? ", tokenizer=tiktoken.get_encoding("gpt2")
 )
 
-
+print(raw_text)
 
 
