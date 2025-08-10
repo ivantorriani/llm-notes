@@ -68,8 +68,14 @@ val_loader = create_dataloader_v1(
 
 #Set up training environment
 num_epochs = 10
-'''
+
 train_loss, val_loss, tokens_seen = train_model_simple(
     model, train_loader, val_loader, optimizer, device, num_epochs=num_epochs, 
     eval_freq=5, eval_iter = 5, start_context="Why do the birds sing? ", tokenizer=tiktoken.get_encoding("gpt2")
-)'''
+)
+
+#run file
+if __name__ == "__main__":
+    train_model_simple(
+    model, train_loader, val_loader, optimizer, device, num_epochs=num_epochs, 
+    eval_freq=5, eval_iter = 5, start_context="Why do the birds sing? ", tokenizer=tiktoken.get_encoding("gpt2"))
