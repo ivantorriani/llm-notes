@@ -16,6 +16,7 @@ from src.Train.train_model_simple import train_model_simple
 from src.Architecture.Model import GPTModel
 from src.Dataset.create_dataloader_v1 import create_dataloader_v1
 from src.text_loaders.read_text import readtxt
+from src.Analysis.loss_vs_tokens import plot_losses
 
 #imports=========================
 
@@ -69,13 +70,12 @@ val_loader = create_dataloader_v1(
 #Set up training environment
 num_epochs = 10
 
-train_loss, val_loss, tokens_seen = train_model_simple(
-    model, train_loader, val_loader, optimizer, device, num_epochs=num_epochs, 
-    eval_freq=5, eval_iter = 5, start_context="Why do the birds sing? ", tokenizer=tiktoken.get_encoding("gpt2")
-)
-
-#run file
+#train
 if __name__ == "__main__":
-    train_model_simple(
+    train_loss, val_loss, tokens_seen =train_model_simple(
     model, train_loader, val_loader, optimizer, device, num_epochs=num_epochs, 
     eval_freq=5, eval_iter = 5, start_context="Why do the birds sing? ", tokenizer=tiktoken.get_encoding("gpt2"))
+
+    epochs_tensor = torch.linspace(0, num_epochs, len(train_loss))
+    plot_losses(epochs_tensor, tokens_seen, train_loss, val_loss)
+    exit(0)
