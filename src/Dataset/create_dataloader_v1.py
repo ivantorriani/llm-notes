@@ -6,11 +6,9 @@ purpose: initialize the dataloader to be fed into the model
 #=========================
 
 #imports=========================
-import torch
 import tiktoken
 from torch.utils.data import  DataLoader
 from src.Dataset.DatasetMaker import GPTDatasetV1
-from src.text_loaders.read_text import readtxt
 #imports=========================
 
 byte_tokenizer = tiktoken.get_encoding("gpt2")
@@ -35,6 +33,8 @@ def create_dataloader_v1(txt, batch_size=4, max_length=256,
     )
 
     return dataloader
+
+
 
 #dataloader_1 = (txt, byte tokenizer, 1, 4, 1, shuffle=True)
 #dataloader_large = (txt,  8, 4, 4, True ) # for larger, more parallel processes 
