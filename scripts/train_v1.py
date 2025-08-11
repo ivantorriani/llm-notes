@@ -78,4 +78,5 @@ if __name__ == "__main__":
 
     epochs_tensor = torch.linspace(0, num_epochs, len(train_loss))
     plot_losses(epochs_tensor, tokens_seen, train_loss, val_loss)
+    torch.save(model.state_dict(), "checkpoints/gpt124m.pth")
     exit(0)
