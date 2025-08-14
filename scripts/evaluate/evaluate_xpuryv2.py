@@ -28,17 +28,19 @@ tokenizer=tiktoken.get_encoding("gpt2")
 
     
 if __name__ == "__main__":
-    start_words = "Hello, I am"
+    start_words = "What a fine"
     tokenized_words = tokenizer.encode(start_words)
     idx = torch.tensor([tokenized_words])
+    model.eval()
     model_test = generate(
         model, 
         idx=idx,
         max_new_tokens=20,
-        context_size=50,
+        context_size=20,
         temperature=0.7,
-        top_k=4,
+        top_k=40,
         eos_id=None
     )
-    print(tokenizer.decode(model_test[0].tolist()))
-
+    decoded_text = tokenizer.decode(model_test[0].tolist())
+    clean_text = "\n".join([line for line in decoded_text.splitlines() if line.strip() != ""])
+    print(clean_text)
