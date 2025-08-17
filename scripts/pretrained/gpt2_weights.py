@@ -2,7 +2,7 @@
 '''
 file: download_weights.py
 purpose: Download weights from internet. 
-note: python3 -m scripts.downloads.download_weights
+note:
 
 '''
 #=========================

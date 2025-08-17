@@ -2,7 +2,8 @@
 '''
 file: evaluate_xpuryv2.py
 purpose: Evaluate the performance of a newly trained model by printing some text
-note: python3 -m scripts.evaluate.evaluate_xpuryv2.py
+note: python3 -m scripts.evaluate.evaluate_xpury
+
 '''
 #=========================
 
@@ -21,14 +22,16 @@ with open("src/Architecture/MODEL_CONFIGS.json", "r", encoding="utf-8") as f:
 
 #initialize model
 model = GPTModel(cfg["XPERYV2_CONFIG"])
-model.load_state_dict(torch.load("checkpoints/exuperyv2.pth"))
+#model.load_state_dict(torch.load("checkpoints/exuperyv2.pth"))
 
 #initialize tokenizer
 tokenizer=tiktoken.get_encoding("gpt2")
 
     
 if __name__ == "__main__":
-    start_words = "What a fine day,"
+    model_path = input("Enter model name: ")
+    model.load_state_dict(torch.load("checkpoints/" + model_path))
+    start_words = "Are we capable of more than our abstract ceilings?"
     tokenized_words = tokenizer.encode(start_words)
     idx = torch.tensor([tokenized_words])
     model.eval()
