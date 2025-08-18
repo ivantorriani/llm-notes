@@ -21,7 +21,7 @@ with open("src/Architecture/MODEL_CONFIGS.json", "r", encoding="utf-8") as f:
     cfg = json.load(f)
 
 #initialize model
-model = GPTModel(cfg["XPERYV2_CONFIG"])
+model = GPTModel(cfg["GPT_CONFIG_124M"])
 #model.load_state_dict(torch.load("checkpoints/exuperyv2.pth"))
 
 #initialize tokenizer
@@ -30,7 +30,7 @@ tokenizer=tiktoken.get_encoding("gpt2")
     
 if __name__ == "__main__":
     model_path = input("Enter model name: ")
-    model.load_state_dict(torch.load("checkpoints/" + model_path))
+    model.load_state_dict(torch.load("checkpoints/" + model_path), map_location=torch.device('cpu'))
     start_words = "Are we capable of more than our abstract ceilings?"
     tokenized_words = tokenizer.encode(start_words)
     idx = torch.tensor([tokenized_words])
