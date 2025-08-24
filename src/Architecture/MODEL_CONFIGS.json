@@ -21,6 +21,19 @@
             "drop_rate": 0.1,        
             "qkv_bias": false        
     },
+
+    "XPERYV4_CONFIG": {
+            "vocab_size": 50257,
+            "context_length": 256,
+            "emb_dim": 768,
+            "n_heads": 8, 
+            "n_layers": 6, 
+            "drop_rate": 0.1,
+            "qkv_bias": false,
+            "_comment": "Reduced number heads, number layers, weight decay. Raised number epochs and number workers. ",
+            "_performance": "Training and val losses split. Overfitting. "
+    },
+    
     "PRETRAINED_GPT2_CONFIGS" :{
         "gpt2-small (124M)": {"emb_dim": 768, "n_layers": 12, "n_heads": 12},
         "gpt2-medium (355M)": {"emb_dim": 1024, "n_layers": 24, "n_heads": 16},

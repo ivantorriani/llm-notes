@@ -30,15 +30,16 @@ tokenizer=tiktoken.get_encoding("gpt2")
     
 if __name__ == "__main__":
     model_path = input("Enter model name: ")
-    model.load_state_dict(torch.load("checkpoints/" + model_path), map_location=torch.device('cpu'))
-    start_words = "Are we capable of more than our abstract ceilings?"
+    checkpoint = torch.load("checkpoints/" + model_path, map_location="cpu")
+    model.load_state_dict(checkpoint)
+    start_words = "The calm waters reminded me of"
     tokenized_words = tokenizer.encode(start_words)
     idx = torch.tensor([tokenized_words])
     model.eval()
     model_test = generate(
         model, 
         idx=idx,
-        max_new_tokens=100,
+        max_new_tokens=50,
         context_size=20,
         temperature=0.7,
         top_k=40,
